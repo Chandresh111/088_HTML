@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Table Exercises</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+      margin-top: 40px;
+    }
+
+    table {
+      width: 80%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #555;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e1f5fe;
+    }
+
+    strong {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛒 Product Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pen</td>
+        <td>10</td>
+        <td>3</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td>Notebook</td>
+        <td>50</td>
+        <td>2</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Bag</td>
+        <td>500</td>
+        <td>1</td>
+        <td>500</td>
+      </tr>
+      <tr>
+        <td>Marker</td>
+        <td>20</td>
+        <td>4</td>
+        <td>80</td>
+      </tr>
+      <tr>
+        <td>Scale</td>
+        <td>15</td>
+        <td>2</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>Grand Total</strong></td>
+        <td><strong>740</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>📚 Weekly Timetable</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9:00 - 10:00</td>
+        <td>Math</td>
+        <td>English</td>
+        <td>Science</td>
+        <td>Math</td>
+        <td>English</td>
+      </tr>
+      <tr>
+        <td>10:00 - 11:00</td>
+        <td>Science</td>
+        <td>Math</td>
+        <td>English</td>
+        <td>Science</td>
+        <td>Math</td>
+      </tr>
+      <tr>
+        <td>11:00 - 12:00</td>
+        <td>English</td>
+        <td>Science</td>
+        <td>Math</td>
+        <td>English</td>
+        <td>Science</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
