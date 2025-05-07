@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive HTML Page</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .box {
+      background-color: #ffffff;
+      border: 2px solid #3498db;
+      padding: 20px;
+      margin: 20px auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    output {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #2ecc71;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Interactive Function Demo</h1>
+
+  <div class="box">
+    <p>Enter your name:</p>
+    <input type="text" id="nameInput" placeholder="Type name here">
+    <button onclick="showName()">Greet Me</button>
+    <output id="greetingOutput"></output>
+  </div>
+
+  <div class="box">
+    <p>Choose a color:</p>
+    <input type="color" id="colorPicker">
+    <button onclick="changeBgColor()">Change Background</button>
+  </div>
+
+  <div class="box">
+    <p>Enter two numbers:</p>
+    <input type="number" id="num1" placeholder="First number">
+    <input type="number" id="num2" placeholder="Second number"><br>
+    <button onclick="addNumbers()">Add Numbers</button>
+    <output id="sumOutput"></output>
+  </div>
+
+  <script>
+    function showName() {
+      let name = document.getElementById("nameInput").value;
+      let output = document.getElementById("greetingOutput");
+      output.textContent = "Hello, " + name + "!";
+    }
+
+    function changeBgColor() {
+      let color = document.getElementById("colorPicker").value;
+      document.body.style.backgroundColor = color;
+    }
+
+    function addNumbers() {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+      let sum = a + b;
+      document.getElementById("sumOutput").textContent = "Sum: " + sum;
+    }
+  </script>
+
+</body>
+</html>
