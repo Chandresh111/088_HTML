@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple DOM Example</title>
+</head>
+<body>
+
+  <h1 id="myHeading">Hello World</h1>
+
+  <p class="myText">This is paragraph one.</p>
+  <p class="myText">This is paragraph two.</p>
+
+  <div>Div one</div>
+  <div>Div two</div>
+
+  <br><br>
+
+  <button onclick="document.getElementById('myHeading').innerText = 'Changed using ID';">
+    Change ID
+  </button>
+  <button onclick="document.getElementsByClassName('myText')[0].innerText = 'Class 1 Changed';
+                   document.getElementsByClassName('myText')[1].innerText = 'Class 2 Changed';">
+    Change Class
+  </button>
+
+  <button onclick="document.getElementsByTagName('div')[0].innerText = 'Div 1 Changed';
+                   document.getElementsByTagName('div')[1].innerText = 'Div 2 Changed';">
+    Change Tag
+  </button>
+
+</body>
+</html>
