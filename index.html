@@ -1,20 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Stopwatch</title>
-  <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
+  <title>Student API</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .student { margin-bottom: 10px; }
+    input, button { margin: 5px; }
+  </style>
 </head>
+
 <body>
+  <h1>Student List</h1>
+  <div id="students"></div>
 
-  <h1>Stopwatch
-  <div id="display">00:00:00</div></h1>
+  <h2>Add / Update Student</h2>
+  <input type="hidden" id="student-id" />
+  <input type="text" id="student-name" placeholder="Name" />
+  <input type="number" id="student-age" placeholder="Age" />
+  <button onclick="addStudent()">Save</button>
 
-  <button onclick="start()">Start</button>
-  <button onclick="stop()">Stop</button>
-  <button onclick="reset()">Reset</button>
+  <script>
+    const API_URL = "http://localhost:3000/students";
 
-  <script src="script.js"></script>
+    function fetchStudents() {
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(data => {
+          const studentList = document.getElementById("students");
+          studentList.innerHTML = "";
+          data.forEach(student => {
+            studentList.innerHTML += `
+              <div class="student">
+                <b>${student.name}</b> (Age: ${student.age})
+                <button onclick="editStudent(${student.id}, '${student.name}', ${student.age})">Edit</button>
+                <button onclick="deleteStudent(${student.id})">Delete</button>
+              </div>
+            `;
+          });
+        });
+    }
+
+    function addStudent() {
+      const id = document.getElementById("student-id").value;
+      const name = document.getElementById("student-name").value;
+      const age = document.getElementById("student-age").value;
+
+      const data = { name, age };
+
+      if (id) {
+        // Update
+        fetch(`${API_URL}/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(fetchStudents);
+      } else {
+        // Create
+        fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        }).then(fetchStudents);
+      }
+
+      document.getElementById("student-id").value = "";
+      document.getElementById("student-name").value = "";
+      document.getElementById("student-age").value = "";
+    }
+
+    function editStudent(id, name, age) {
+      document.getElementById("student-id").value = id;
+      document.getElementById("student-name").value = name;
+      document.getElementById("student-age").value = age;
+    }
+
+    function deleteStudent(id) {
+      fetch(`${API_URL}/${id}`, {
+        method: "DELETE"
+      }).then(fetchStudents);
+    }
+
+    fetchStudents();
+  </script>
 </body>
 </html>
